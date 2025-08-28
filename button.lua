@@ -12,32 +12,51 @@ action_wheel:setPage(mainPage)
  func = function to run when toggled
 ]]--
 
-function button.button_normal(part,title,toggleTitle,item,toggleItem,func)
+function button.button_switch(title1,toggleTitle2,item1,toggleItem2,part,namefunction)
     local toggleAction = mainPage:newAction()
-        :title(title)
-        :toggleTitle(toggleTitle)
-        :item(item)
-        :toggleItem(toggleItem)
+        :title(title1)
+        :toggleTitle(toggleTitle2)
+        :item(item1)
+        :toggleItem(toggleItem2)
         :setOnToggle(function(state)
-            func(state)
+            namefunction(state)
         end)
+
+        function namefunction(state)
+            if state then
+                part:setVisible(false)
+            else
+                part:setVisible(true)
+            end
+        end
 end
 
-function button.Mouth(name,key,func)
+function button.Mouth(name,key,Mouthopen,Mouthoff,namefunction)
+
+    function namefunction(state)
+        if state then
+            Mouthopen:setVisible(true)
+            Mouthoff:setVisible(false)
+        else
+            Mouthopen:setVisible(false)
+            Mouthoff:setVisible(true)
+        end
+    end
+
     local Mouth = keybinds:newKeybind(name, key)
     local isMouse5Held = false
 
     name:setOnPress(function()
         if not isMouse5Held then
             isMouse5Held = true
-            func(true)
+            namefunction(true)
         end
     end)
 
     name:setOnRelease(function()
         if isMouse5Held then
             isMouse5Held = false
-            func(false)
+            namefunction(false)
         end
     end)
 
