@@ -43,17 +43,17 @@ function button.Mouth(name,key,Mouthopen,Mouthoff,namefunction)
         end
     end
 
-    local Mouth = keybinds:newKeybind(name, key)
+    local Mouth = keybinds:newKeybind(name,key)
     local isMouse5Held = false
 
-    name:setOnPress(function()
+    Mouth:setOnPress(function()
         if not isMouse5Held then
             isMouse5Held = true
             namefunction(true)
         end
     end)
 
-    name:setOnRelease(function()
+    Mouth:setOnRelease(function()
         if isMouse5Held then
             isMouse5Held = false
             namefunction(false)
