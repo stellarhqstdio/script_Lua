@@ -63,4 +63,23 @@ function button.Mouth(name,key,Mouthopen,Mouthoff,namefunction)
 
 end
 
+function button.key_switch(name,key,part,namefunction,nameLocal,BooleanLocal)
+    function namefunction(state)
+        if state then
+            part:setVisible(false)
+        else
+            part:setVisible(true)
+        end
+    end
+    
+    local nameLocal = BooleanLocal
+    
+    local exampleKey = keybinds:newKeybind(name,key)
+    exampleKey.press = function()
+        nameLocal = not nameLocal
+        namefunction(nameLocal)
+    end
+end
+
+
 return button
