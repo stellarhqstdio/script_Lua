@@ -1,3 +1,4 @@
+-- © Copyright Stellar-HQ-Studio--
 local button = {}
 
 local mainPage = action_wheel:newPage()
@@ -83,3 +84,4 @@ end
 
 
 return button
+-- © Copyright Stellar-HQ-Studio--
