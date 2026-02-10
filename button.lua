@@ -1,4 +1,3 @@
--- © Copyright Stellar-HQ-Studio--
 local button = {}
 
 local mainPage = action_wheel:newPage()
@@ -32,6 +31,14 @@ function button.button_switch(title1,toggleTitle2,item1,toggleItem2,part,namefun
         end
 end
 
+--[[
+    name = name of the keybind
+    key = key of the keybind
+    Mouthopen = model part when mouth is open
+    Mouthoff = model part when mouth is closed
+    namefunction = function to run when pressed
+]]--
+
 function button.Mouth(name,key,Mouthopen,Mouthoff,namefunction)
 
     function namefunction(state)
@@ -64,6 +71,15 @@ function button.Mouth(name,key,Mouthopen,Mouthoff,namefunction)
 
 end
 
+
+--[[
+    part = model part
+    name = name of the keybind
+    key = key of the keybind
+    namefunction = function to run when toggled
+    BooleanLocal = initial state of the part (true = visible, false = invisible)
+]]--
+
 function button.key_switch(name,key,part,namefunction,nameLocal,BooleanLocal)
     function namefunction(state)
         if state then
@@ -82,6 +98,4 @@ function button.key_switch(name,key,part,namefunction,nameLocal,BooleanLocal)
     end
 end
 
-
 return button
--- © Copyright Stellar-HQ-Studio--
