@@ -1,7 +1,36 @@
+--จัดทำขึ้นโดย Stellar-HQ-Studio ห้ามแจกจ่ายหรือดัดแปรงทำซ้ำโดยเด็ดขาด--
+
 local button = {}
 
 local mainPage = action_wheel:newPage()
 action_wheel:setPage(mainPage)
+
+--[[
+ part = model part
+ title = title of the button
+ texture2 = texture of the button
+ width = width of the texture
+ height = height of the texture
+ scale = scale of the texture
+ func = function to run when toggled
+]]--
+
+function button.button_switch_textures(title1,texture2,width,height,scale,part,namefunction)
+    local toggleAction = mainPage:newAction()
+        :title(title1)
+        :texture(textures[texture2], 0, 0, width, height, scale)
+        :setOnToggle(function(state)
+            namefunction(state)
+        end)
+
+        function namefunction(state)
+            if state then
+                part:setVisible(false)
+            else
+                part:setVisible(true)
+            end
+        end
+end
 
 --[[
  part = model part
